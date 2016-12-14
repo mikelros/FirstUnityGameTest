@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     public Text scoreText;
     public Text winText;
+    public int lifes;
 
     private Rigidbody rb;
     private int score;
@@ -36,6 +37,20 @@ public class PlayerController : MonoBehaviour {
         movement.y = 0;
         rb.AddForce(movement * speed);
 
+    }
+
+    void Update()
+    {
+        if (lifes < 0)
+        {
+            Destroy(this.gameObject);
+            winText.text = "YOU LOSE";
+        }
+        if(transform.position.y < -3)
+        {
+            lifes--;
+            transform.position = new Vector3(0, 0, 0);
+        }
     }
 
     void OnTriggerEnter(Collider other)
