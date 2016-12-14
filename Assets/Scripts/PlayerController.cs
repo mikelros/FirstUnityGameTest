@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
         Vector3 movement;
         if (Application.isMobilePlatform)
         {
-            movement = new Vector3(Input.acceleration.x, 0, -Input.acceleration.z);
+            movement = new Vector3(Input.acceleration.x, 0, Input.acceleration.y);
         } else
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
